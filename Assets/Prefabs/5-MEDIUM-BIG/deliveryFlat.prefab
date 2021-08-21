@@ -428,6 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7472718100262582676}
   - component: {fileID: 708724787422351717}
+  - component: {fileID: -4420292840631297337}
   m_Layer: 0
   m_Name: deliveryFlat
   m_TagString: Untagged
@@ -466,4 +467,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e2fdefb5e64a48bb0612b22a6a362a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 4
+  itemType: 3
+--- !u!65 &-4420292840631297337
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854204262077178670}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.8349724, z: 2.6502726}
+  m_Center: {x: 0, y: 0.6676123, z: -0.00750182}
