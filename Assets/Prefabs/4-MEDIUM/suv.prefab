@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4759641520361557300}
   - component: {fileID: 4051140004730566963}
+  - component: {fileID: 6222333199582001298}
   m_Layer: 0
   m_Name: suv
   m_TagString: Untagged
@@ -295,6 +296,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 3
+--- !u!65 &6222333199582001298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280035234432784270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5518573599392513619
 GameObject:
   m_ObjectHideFlags: 0

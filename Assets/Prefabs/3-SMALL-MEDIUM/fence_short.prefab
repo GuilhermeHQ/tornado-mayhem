@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4891615906818312985}
   - component: {fileID: 7207577489179066323}
   - component: {fileID: 6182120992307288613}
+  - component: {fileID: -8109166735804862761}
   m_Layer: 0
   m_Name: fence_short
   m_TagString: Untagged
@@ -95,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+--- !u!65 &-8109166735804862761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153154998625967622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1999999, y: 0.265, z: 0.39999998}
+  m_Center: {x: 0, y: 0.1325, z: 0}

@@ -510,6 +510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9171092548544123163}
   - component: {fileID: 6693990930910558483}
+  - component: {fileID: 7722251250870992329}
   m_Layer: 0
   m_Name: police
   m_TagString: Untagged
@@ -550,3 +551,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 3
+--- !u!65 &7722251250870992329
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8362503607744203681}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

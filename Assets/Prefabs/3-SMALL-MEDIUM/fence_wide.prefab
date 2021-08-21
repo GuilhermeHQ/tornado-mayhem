@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6669887210369411007}
   - component: {fileID: 8895951070424830837}
   - component: {fileID: 4191778185800383153}
+  - component: {fileID: 7786213935775719669}
   m_Layer: 0
   m_Name: fence_wide
   m_TagString: Untagged
@@ -95,3 +96,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 2
+--- !u!65 &7786213935775719669
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6950241893368345248}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5999999, y: 0.265, z: 0.39999998}
+  m_Center: {x: 0, y: 0.1325, z: 0}
