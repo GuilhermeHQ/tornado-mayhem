@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 288667807}
   - component: {fileID: 2030153087}
   - component: {fileID: 2030153086}
-  - component: {fileID: 5739410431185415713}
   m_Layer: 0
   m_Name: Tornado
   m_TagString: Untagged
@@ -85,7 +84,7 @@ CharacterController:
   m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: -500, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!114 &288667807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,8 +114,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1.51, z: 1.25}
-  m_Center: {x: 0, y: 0.78, z: 0}
+  m_Size: {x: 1.25, y: 1.7670592, z: 1.25}
+  m_Center: {x: 0, y: 0.6514703, z: 0}
 --- !u!54 &2030153086
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -133,19 +132,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5739410431185415713
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4994537932019227300}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.25, y: 1.51, z: 1.25}
-  m_Center: {x: 0, y: 0.78, z: 0}
 --- !u!1001 &3767854178162245183
 PrefabInstance:
   m_ObjectHideFlags: 0
