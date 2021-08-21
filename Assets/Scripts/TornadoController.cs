@@ -12,16 +12,17 @@ public class TornadoController : MonoBehaviour
     public float speed = 6f;
     public float growthRatio = .25f;
     public float maxLevel = 10;
-    
+
     bool isEnabled = true;
     private Vector3 tornadoSize;
     private Vector3 inputs = Vector3.zero;
     private CinemachineFreeLook cinemachineFreeLook;
 
-    public ItemPoints itemPointConfig;
-    private Dictionary<ItemType, ItemPointData> ItemPointsDict;
-    private int currentLevel = 1;
-    private int currentPoints = 0;
+    // public ItemPoints itemPointConfig;
+    // private Dictionary<ItemType, ItemPointData> ItemPointsDict;
+
+
+    public Action<DestructibleObject> onCollideWithDestructibleObject;
 
 
     private void Start()
@@ -30,32 +31,31 @@ public class TornadoController : MonoBehaviour
         controller.detectCollisions = false;
         cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
 
-        itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
-
-        if (itemPointConfig == null)
-        {
-            Debug.Log("Não consegui encontrar o arquivo de dados de item!!");
-            return;
-        }
-        
-        ItemPointsDict = new Dictionary<ItemType, ItemPointData>();
-
-        foreach (ItemPointData itemPointData in itemPointConfig.itemPointData)
-        { 
-            ItemPointsDict.Add(itemPointData.itemType, itemPointData);
-        }
+        // itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
+        //
+        // if (itemPointConfig == null)
+        // {
+        //     Debug.Log("Não consegui encontrar o arquivo de dados de item!!");
+        //     return;
+        // }
+        //
+        // ItemPointsDict = new Dictionary<ItemType, ItemPointData>();
+        //
+        // foreach (ItemPointData itemPointData in itemPointConfig.itemPointData)
+        // { 
+        //     ItemPointsDict.Add(itemPointData.itemType, itemPointData);
+        // }
     }
 
-    private void Grow()
+    public void Grow()
     {
         transform.localScale += Vector3.one * growthRatio;
         tornadoSize = GetMaxBounds(gameObject).size;
         
         cinemachineFreeLook.m_YAxis.Value = transform.localScale.x / (1 + (maxLevel - 1) * growthRatio);
-        currentLevel++;
     }
 
-    private void Shrink()
+    public void Shrink()
     {
         transform.localScale -= Vector3.one * growthRatio;
         tornadoSize = GetMaxBounds(gameObject).size;
@@ -77,6 +77,11 @@ public class TornadoController : MonoBehaviour
         
         gfx.Rotate(Vector3.up, rotationSpeed* Time.deltaTime);
     }
+
+    // public bool ShouldLevelUp()
+    // {
+    //     return currentPoints >=  initialPointsToLevelUp * Math.Pow(progressionMultiplier, currentLevel - 1);
+    // }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -102,13 +107,20 @@ public class TornadoController : MonoBehaviour
         {
             return;
         }
+        
+        onCollideWithDestructibleObject?.Invoke(destructibleObject);
 
-        if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
-        {
-            Debug.Log("Building Destroyed");
-            Destroy(other.gameObject);
-            Grow();
-        }
+        // if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
+        // {
+        //     Debug.Log("Building Destroyed");
+        //     Destroy(other.gameObject);
+        //
+        //     if (ShouldLevelUp())
+        //     {
+        //         currentLevel++;
+        //         Grow();
+        //     }
+        // }
     }
     
     Bounds GetMaxBounds(GameObject parent)

@@ -20,11 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c9e2611-8190-4f17-813d-42dbedd2eb93" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemPoints.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemPoints.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CountdownTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CountdownTimer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/ItemPointData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/ItemPointData.asset.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +33,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameController.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -41,7 +43,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DestructibleObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPoints.cs" />
+        <option value="$PROJECT_DIR$/Assets/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/CountdownTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
       </list>
     </option>
   </component>
@@ -74,10 +79,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="15492">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="15492" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -92,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629502469525</updated>
-      <workItem from="1629502475288" duration="16976000" />
+      <workItem from="1629502475288" duration="20704000" />
     </task>
     <servers />
   </component>
@@ -116,6 +121,38 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom" timestamp="1629574206096">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.bottom/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574206096" />
+    <state width="1877" height="375" key="GridCell.Tab.0.center" timestamp="1629574206096">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.center/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574206096" />
+    <state width="1877" height="375" key="GridCell.Tab.0.left" timestamp="1629574206095">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.left/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574206095" />
+    <state width="1877" height="375" key="GridCell.Tab.0.right" timestamp="1629574206096">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.0.right/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574206096" />
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom" timestamp="1629574213941">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.bottom/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574213941" />
+    <state width="1877" height="375" key="GridCell.Tab.1.center" timestamp="1629574213941">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.center/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574213941" />
+    <state width="1877" height="375" key="GridCell.Tab.1.left" timestamp="1629574213941">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.left/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574213941" />
+    <state width="1877" height="375" key="GridCell.Tab.1.right" timestamp="1629574213941">
+      <screen x="-1920" y="-322" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="375" key="GridCell.Tab.1.right/0.0.1366.728/-1920.-322.1920.1040@-1920.-322.1920.1040" timestamp="1629574213941" />
     <state x="-1828" y="-230" width="1736" height="856" key="VCS.FileHistoryDialog" timestamp="1629550284064">
       <screen x="-1920" y="-322" width="1920" height="1040" />
     </state>
