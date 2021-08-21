@@ -31,6 +31,3 @@ MonoBehaviour:
   - itemType: 5
     points: 40
     levelToCollect: 6
-  - itemType: 6
-    points: 80
-    levelToCollect: 7
