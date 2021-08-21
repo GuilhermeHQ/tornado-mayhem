@@ -47,6 +47,9 @@ public class GameController : MonoBehaviour
             Debug.Log("Building Destroyed");
             Destroy(destructibleObject.gameObject);
 
+            currentPoints += ItemPointsDict[destructibleObject.itemType].points;
+            score.scoreValue = currentPoints;
+
             if (ShouldLevelUp())
             {
                 currentLevel++;
