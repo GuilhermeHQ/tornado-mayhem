@@ -4,6 +4,7 @@ using UnityEngine;
 public class DestructibleObject: MonoBehaviour
 {
     private Bounds objectSize;
+    public ItemType itemType;
 
     private void Start()
     {
@@ -30,7 +31,7 @@ public class DestructibleObject: MonoBehaviour
         // }
  
         // Draw total bounds of all the children as a white box.
-        Gizmos.color = new Color(1f, 1f, 1f, 0.1f);
+        Gizmos.color = new Color(0.6f, 0.5f, 1f, 0.3f);
         Gizmos.DrawCube(objectSize.center, objectSize.size);
     }
 }

@@ -1,35 +1,47 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class TornadoController : MonoBehaviour
 {
     public CharacterController controller;
     public Transform gfx;
-    public float rotationSpeed = 1f;
+    public float rotationSpeed = 200f;
     public float speed = 6f;
     public float growthRatio = .25f;
+    public float maxScale = 4;
     
     bool isEnabled = true;
     private Vector3 tornadoSize;
     private Vector3 inputs = Vector3.zero;
-    
-    
+    private CinemachineFreeLook cinemachineFreeLook;
+
+    private ItemPoints itemPointConfig;
+    private int currentLevel = 1;
+
+
 
     private void Start()
     {
         tornadoSize = GetMaxBounds(this.gameObject).size;
+        controller.detectCollisions = false;
+        cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
     }
 
     private void Grow()
     {
-        
+        transform.localScale += Vector3.one * growthRatio;
+        tornadoSize = GetMaxBounds(gameObject).size;
+        cinemachineFreeLook.m_YAxis.Value = transform.localScale.x / maxScale;
+        currentLevel++;
     }
 
     private void Shrink()
     {
-        
+        transform.localScale -= Vector3.one * growthRatio;
+        tornadoSize = GetMaxBounds(gameObject).size;
     }
 
     // Update is called once per frame
@@ -55,10 +67,38 @@ public class TornadoController : MonoBehaviour
         var objVolume = objsize.x * objsize.y * objsize.z;
 
         var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
+
+        Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
+        
         if (objVolume <= tornadoVolume)
         {
             Debug.Log("Building Destroyed");
+            Destroy(other.gameObject);
+            Grow();
         }
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        var destructibleObject = other.GetComponent<DestructibleObject>();
+        if (destructibleObject == null)
+        {
+            return;
+        }
+        
+        // var objsize = other.bounds.size;
+        // var objVolume = objsize.x * objsize.y * objsize.z;
+        //
+        // var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
+        //
+        // Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
+        
+        // if (objVolume <= tornadoVolume)
+        // {
+        //     Debug.Log("Building Destroyed");
+        //     Destroy(other.gameObject);
+        //     Grow();
+        // }
     }
     
     Bounds GetMaxBounds(GameObject parent)

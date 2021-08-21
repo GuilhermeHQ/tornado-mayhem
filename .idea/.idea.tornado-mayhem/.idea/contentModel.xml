@@ -10,6 +10,9 @@
         <e p="Scripts" t="Include">
           <e p="CountdownTimer.cs" t="Include" />
           <e p="DestructibleObject.cs" t="Include" />
+          <e p="itemPoints.cs" t="Include" />
+          <e p="ItemType.cs" t="Include" />
+          <e p="ScoreScript.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
           <e p="TornadoController.cs" t="Include" />
         </e>
