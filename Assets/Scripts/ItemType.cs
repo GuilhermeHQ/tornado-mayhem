@@ -1,8 +1,10 @@
 public enum ItemType
 {
-    PEOPLE,
-    FENCE,
-    TREE,
-    CAR,
-    HOUSE
+    SMALLEST,
+    SMALL,
+    SMALLMEDIUM,
+    MEDIUM,
+    MEDIUMBIG,
+    BIG,
+    BIGGEST
 }
