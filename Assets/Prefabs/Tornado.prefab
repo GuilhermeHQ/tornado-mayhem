@@ -102,7 +102,7 @@ MonoBehaviour:
   rotationSpeed: 400
   speed: 6
   growthRatio: 0.25
-  maxLevel: 7
+  maxLevel: 1
 --- !u!65 &2030153087
 BoxCollider:
   m_ObjectHideFlags: 0
