@@ -11,16 +11,17 @@ public class TornadoController : MonoBehaviour
     public float rotationSpeed = 200f;
     public float speed = 6f;
     public float growthRatio = .25f;
-    public float maxScale = 4;
+    public float maxLevel = 10;
     
     bool isEnabled = true;
     private Vector3 tornadoSize;
     private Vector3 inputs = Vector3.zero;
     private CinemachineFreeLook cinemachineFreeLook;
 
-    private ItemPoints itemPointConfig;
+    public ItemPoints itemPointConfig;
+    private Dictionary<ItemType, ItemPointData> ItemPointsDict;
     private int currentLevel = 1;
-
+    private int currentPoints = 0;
 
 
     private void Start()
@@ -28,13 +29,29 @@ public class TornadoController : MonoBehaviour
         tornadoSize = GetMaxBounds(this.gameObject).size;
         controller.detectCollisions = false;
         cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
+
+        itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
+
+        if (itemPointConfig == null)
+        {
+            Debug.Log("Não consegui encontrar o arquivo de dados de item!!");
+            return;
+        }
+        
+        ItemPointsDict = new Dictionary<ItemType, ItemPointData>();
+
+        foreach (ItemPointData itemPointData in itemPointConfig.itemPointData)
+        { 
+            ItemPointsDict.Add(itemPointData.itemType, itemPointData);
+        }
     }
 
     private void Grow()
     {
         transform.localScale += Vector3.one * growthRatio;
         tornadoSize = GetMaxBounds(gameObject).size;
-        cinemachineFreeLook.m_YAxis.Value = transform.localScale.x / maxScale;
+        
+        cinemachineFreeLook.m_YAxis.Value = transform.localScale.x / (1 + (maxLevel - 1) * growthRatio);
         currentLevel++;
     }
 
@@ -63,19 +80,19 @@ public class TornadoController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        var objsize = other.collider.bounds.size;
-        var objVolume = objsize.x * objsize.y * objsize.z;
-
-        var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
-
-        Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
-        
-        if (objVolume <= tornadoVolume)
-        {
-            Debug.Log("Building Destroyed");
-            Destroy(other.gameObject);
-            Grow();
-        }
+        // var objsize = other.collider.bounds.size;
+        // var objVolume = objsize.x * objsize.y * objsize.z;
+        //
+        // var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
+        //
+        // Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
+        //
+        // if (objVolume <= tornadoVolume)
+        // {
+        //     Debug.Log("Building Destroyed");
+        //     Destroy(other.gameObject);
+        //     Grow();
+        // }
     }
     
     private void OnTriggerEnter(Collider other)
@@ -85,20 +102,13 @@ public class TornadoController : MonoBehaviour
         {
             return;
         }
-        
-        // var objsize = other.bounds.size;
-        // var objVolume = objsize.x * objsize.y * objsize.z;
-        //
-        // var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
-        //
-        // Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
-        
-        // if (objVolume <= tornadoVolume)
-        // {
-        //     Debug.Log("Building Destroyed");
-        //     Destroy(other.gameObject);
-        //     Grow();
-        // }
+
+        if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
+        {
+            Debug.Log("Building Destroyed");
+            Destroy(other.gameObject);
+            Grow();
+        }
     }
     
     Bounds GetMaxBounds(GameObject parent)

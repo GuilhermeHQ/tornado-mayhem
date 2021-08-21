@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class ItemPointData
 {
     public ItemType itemType;
     public int points;
-    public int pointsToCollect;
+    [FormerlySerializedAs("pointsToCollect")] 
+    public int levelToCollect;
 }
 
 [CreateAssetMenu(menuName = "Configs/ItemPoints")]
