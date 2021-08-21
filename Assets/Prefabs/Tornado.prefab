@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 4994537932019227300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 6901761243549234603}
   - {fileID: 474002614}
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 288667806}
   gfx: {fileID: 6901761243549234603}
-  rotationSpeed: 200
+  rotationSpeed: 400
   speed: 6
-  growthRatio: 0.05
-  maxLevel: 10
+  growthRatio: 0.25
+  maxLevel: 7
 --- !u!65 &2030153087
 BoxCollider:
   m_ObjectHideFlags: 0
