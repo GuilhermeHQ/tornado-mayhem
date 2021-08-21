@@ -30,6 +30,7 @@ public class TornadoController : MonoBehaviour
         tornadoSize = GetMaxBounds(this.gameObject).size;
         controller.detectCollisions = false;
         cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
+        cinemachineFreeLook.m_YAxis.Value = (transform.localScale.x - 1) / (1 + (maxLevel) * growthRatio);
 
         // itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
         //
@@ -52,7 +53,7 @@ public class TornadoController : MonoBehaviour
         transform.localScale += Vector3.one * growthRatio;
         tornadoSize = GetMaxBounds(gameObject).size;
         
-        cinemachineFreeLook.m_YAxis.Value = transform.localScale.x / (1 + (maxLevel - 1) * growthRatio);
+        cinemachineFreeLook.m_YAxis.Value = (transform.localScale.x - 1) / (1 + (maxLevel) * growthRatio);
     }
 
     public void Shrink()

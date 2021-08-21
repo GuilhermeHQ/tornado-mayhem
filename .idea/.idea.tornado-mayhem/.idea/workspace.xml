@@ -21,7 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2c9e2611-8190-4f17-813d-42dbedd2eb93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tornado-mayhem/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tornado-mayhem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/tornado-mayhem.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +43,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemType.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/ItemPoints.cs" />
         <option value="$PROJECT_DIR$/Assets/GameController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/CountdownTimer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ScoreScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TornadoController.cs" />
       </list>
     </option>
   </component>
@@ -95,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1629502469525</updated>
-      <workItem from="1629502475288" duration="22051000" />
+      <workItem from="1629502475288" duration="23396000" />
     </task>
     <servers />
   </component>
