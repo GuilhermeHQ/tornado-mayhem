@@ -492,7 +492,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "GuilhermeHQ: \nGame/ Level/ Sound Design\n\nCaio1: \nALL programming and
-    problem solving "
+    problem solving \n------"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 849c9bc0b7f911249be8c9c19d4caf2b, type: 2}
   m_sharedMaterial: {fileID: 551741634010078540, guid: 849c9bc0b7f911249be8c9c19d4caf2b, type: 2}
