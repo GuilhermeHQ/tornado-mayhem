@@ -35,7 +35,7 @@ public class CountdownTimer : MonoBehaviour
     {
         
         countdownText.text = timeLeft.Seconds.ToString("0");
-        if (timeLeft <= TimeSpan.FromSeconds(10))
+        if (timeLeft <= TimeSpan.FromSeconds(4))
         {
             soundPlayer.PlaySound(timeLeft.Seconds.ToString("0"));
             countdownText.color = Color.red;
