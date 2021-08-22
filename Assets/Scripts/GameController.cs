@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private ScoreScript score;
     [SerializeField] private CountdownTimer countdownTimer;
     [SerializeField] private float gameTimeInSeconds = 30;
-    
+    [SerializeField] private Button mainMenuButton;
+
     private ItemPoints itemPointConfig;
     private Dictionary<ItemType, ItemPointData> ItemPointsDict;
     private int currentLevel = 1;
@@ -25,7 +27,8 @@ public class GameController : MonoBehaviour
     {
         tornado = FindObjectOfType<TornadoController>();
         tornado.onCollideWithDestructibleObject = OnCollideWithDestructibleObject;
-        
+        mainMenuButton.onClick.AddListener(GoToMainMenu);
+
         itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
 
         if (itemPointConfig == null)
@@ -78,11 +81,9 @@ public class GameController : MonoBehaviour
     {
         return currentPoints >=  initialPointsToLevelUp * Math.Pow(progressionMultiplier, currentLevel - 1);
     }
-
-
-    // Update is called once per frame
-    void Update()
+    
+    private void GoToMainMenu()
     {
-        
+        SceneManager.LoadScene("game-start 1");
     }
 }
