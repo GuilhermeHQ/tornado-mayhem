@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TornadoController tornado;
     [SerializeField] private ScoreScript score;
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private SoundPlayer soundPlayer;
     [SerializeField] private float gameTimeInSeconds = 30;
     [SerializeField] private Button mainMenuButton;
 
@@ -55,6 +57,7 @@ public class GameController : MonoBehaviour
     private IEnumerator EndGame()
     {
         tornado.enabled = false;
+        soundPlayer.PlaySound("time_over");
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene("game-start 1");
     }
@@ -65,12 +68,14 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Building Destroyed");
             tornado.OrbitObject(destructibleObject);
+            soundPlayer.PlaySound("sfx0" + Random.Range(1, 9), true);
 
             currentPoints += ItemPointsDict[destructibleObject.itemType].points;
             score.scoreValue = currentPoints;
 
             if (ShouldLevelUp())
             {
+                soundPlayer.PlaySound("Power_up");
                 currentLevel++;
                 tornado.Grow();
             }

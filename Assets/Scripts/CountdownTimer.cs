@@ -8,7 +8,8 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] float startingTime = 10f;
     [SerializeField] Text countdownText;
-    
+    [SerializeField] private SoundPlayer soundPlayer;
+
     void Start()
     {
     }
@@ -32,9 +33,11 @@ public class CountdownTimer : MonoBehaviour
 
     private void UpdateTimerText(TimeSpan timeLeft)
     {
-        countdownText.text = timeLeft.TotalSeconds.ToString("0");
+        
+        countdownText.text = timeLeft.Seconds.ToString("0");
         if (timeLeft <= TimeSpan.FromSeconds(10))
         {
+            soundPlayer.PlaySound(timeLeft.Seconds.ToString("0"));
             countdownText.color = Color.red;
         }
     }
@@ -54,7 +57,7 @@ public class CountdownTimer : MonoBehaviour
             
             onUpdate?.Invoke(timeLeft);
             
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1);
 
             if (timeLeft <= TimeSpan.Zero)
             {

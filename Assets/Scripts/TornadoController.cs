@@ -22,9 +22,6 @@ public class TornadoController : MonoBehaviour
     private Vector3 inputs = Vector3.zero;
     private CinemachineFreeLook cinemachineFreeLook;
 
-    // public ItemPoints itemPointConfig;
-    // private Dictionary<ItemType, ItemPointData> ItemPointsDict;
-
 
     public Action<DestructibleObject> onCollideWithDestructibleObject;
 
@@ -39,21 +36,6 @@ public class TornadoController : MonoBehaviour
         cinemachineFreeLook.m_YAxis.Value = (transform.localScale.x - 1) / (1 + (maxLevel) * growthRatio);
         
         orbitingObjects = new Queue<DestructibleObject>(maxObjectsOrbiting);
-
-        // itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
-        //
-        // if (itemPointConfig == null)
-        // {
-        //     Debug.Log("Não consegui encontrar o arquivo de dados de item!!");
-        //     return;
-        // }
-        //
-        // ItemPointsDict = new Dictionary<ItemType, ItemPointData>();
-        //
-        // foreach (ItemPointData itemPointData in itemPointConfig.itemPointData)
-        // { 
-        //     ItemPointsDict.Add(itemPointData.itemType, itemPointData);
-        // }
     }
 
     public void Grow()
@@ -133,33 +115,5 @@ public class TornadoController : MonoBehaviour
         destructibleObject.OrbitAround(this.gfx);
         orbitingObjects.Enqueue(destructibleObject);
         //StartCoroutine(RotateAround(destructibleObject));
-    }
-
-    private IEnumerator RotateAround(DestructibleObject destructibleObject)
-    {
-        Tween tween;
-        
-        destructibleObject.transform.SetParent(this.gfx);
-
-        tween = destructibleObject.transform.DOLocalMove(
-            new Vector3(
-                Random.Range(-1.5f, 1.5f), 
-                Random.Range(-0.3f, 0.3f), 
-                Random.Range(-1.5f, 1.5f)), 
-            1).Play();
-
-        destructibleObject.transform.DOScale(destructibleObject.transform.localScale * 0.4f, 2);
-        
-        yield return new WaitUntil(() => !tween.IsPlaying());
-        
-
-        tween = destructibleObject.transform.DOLocalRotate(Random.rotation.eulerAngles, 1, RotateMode.Fast).SetLoops(-1).SetEase(Ease.Linear).Play();
-        
-        //destructibleObject.transform.DOShakePosition(5, 0.1f, 5, 90f, false, false).Play();
-        //tween = destructibleObject.transform.DOShakeRotation(5, 0.1f, 5, 90f, false).Play();
-        
-        yield return new WaitForSeconds(5);
-        tween.Kill();
-        Destroy(destructibleObject.gameObject);
     }
 }

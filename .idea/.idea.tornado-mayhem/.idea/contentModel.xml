@@ -28,8 +28,10 @@
           <e p="ItemType.cs" t="Include" />
           <e p="ScoreScript.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
+          <e p="tornadoCollider.cs" t="Include" />
           <e p="TornadoController.cs" t="Include" />
         </e>
+        <e p="SoundPlayer.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />
@@ -61,7 +63,6 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
-        <e p="tornadoCollider.cs" t="Include" />
         <e p="TutorialInfo" t="Include">
           <e p="Scripts" t="Include">
             <e p="Editor" t="Include">
