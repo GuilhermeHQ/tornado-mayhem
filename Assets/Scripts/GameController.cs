@@ -45,7 +45,7 @@ public class GameController : MonoBehaviour
         if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
         {
             Debug.Log("Building Destroyed");
-            Destroy(destructibleObject.gameObject);
+            tornado.OrbitObject(destructibleObject);
 
             currentPoints += ItemPointsDict[destructibleObject.itemType].points;
             score.scoreValue = currentPoints;

@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TornadoController : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class TornadoController : MonoBehaviour
     public float speed = 6f;
     public float growthRatio = .25f;
     public float maxLevel = 10;
+    public int maxObjectsOrbiting = 10;
 
     bool isEnabled = true;
     private Vector3 tornadoSize;
@@ -24,6 +27,8 @@ public class TornadoController : MonoBehaviour
 
     public Action<DestructibleObject> onCollideWithDestructibleObject;
 
+    private Queue<DestructibleObject> orbitingObjects;
+    
 
     private void Start()
     {
@@ -31,6 +36,8 @@ public class TornadoController : MonoBehaviour
         controller.detectCollisions = false;
         cinemachineFreeLook = FindObjectOfType<CinemachineFreeLook>();
         cinemachineFreeLook.m_YAxis.Value = (transform.localScale.x - 1) / (1 + (maxLevel) * growthRatio);
+        
+        orbitingObjects = new Queue<DestructibleObject>(maxObjectsOrbiting);
 
         // itemPointConfig = Resources.Load("ItemPointData") as ItemPoints;
         //
@@ -78,28 +85,8 @@ public class TornadoController : MonoBehaviour
         
         gfx.Rotate(Vector3.up, rotationSpeed* Time.deltaTime);
     }
+    
 
-    // public bool ShouldLevelUp()
-    // {
-    //     return currentPoints >=  initialPointsToLevelUp * Math.Pow(progressionMultiplier, currentLevel - 1);
-    // }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        // var objsize = other.collider.bounds.size;
-        // var objVolume = objsize.x * objsize.y * objsize.z;
-        //
-        // var tornadoVolume = tornadoSize.x * tornadoSize.y * tornadoSize.z;
-        //
-        // Debug.Log("objVolume:" + objVolume + " | tornadoVolume:" + tornadoVolume);
-        //
-        // if (objVolume <= tornadoVolume)
-        // {
-        //     Debug.Log("Building Destroyed");
-        //     Destroy(other.gameObject);
-        //     Grow();
-        // }
-    }
     
     private void OnTriggerEnter(Collider other)
     {
@@ -109,19 +96,11 @@ public class TornadoController : MonoBehaviour
             return;
         }
         
+        //Destroying collider
+        Destroy(other);
+        
         onCollideWithDestructibleObject?.Invoke(destructibleObject);
-
-        // if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
-        // {
-        //     Debug.Log("Building Destroyed");
-        //     Destroy(other.gameObject);
-        //
-        //     if (ShouldLevelUp())
-        //     {
-        //         currentLevel++;
-        //         Grow();
-        //     }
-        // }
+        
     }
     
     Bounds GetMaxBounds(GameObject parent)
@@ -134,17 +113,52 @@ public class TornadoController : MonoBehaviour
         return total;
     }
     
-    private void OnDrawGizmos()
+    // private void OnDrawGizmos()
+    // {
+    //     
+    //     // Draw total bounds of all the children as a white box.
+    //     Gizmos.color = new Color(0f, 1f, 1f, 0.1f);
+    //     Gizmos.DrawCube(gfx.position, tornadoSize);
+    // }
+
+    public void OrbitObject(DestructibleObject destructibleObject)
     {
-        // // Draw each child's bounds as a green box.
-        // Gizmos.color = new Color(0f, 1f, 0f, 0.3f);
-        // foreach (var child in GetComponentsInChildren<Collider>())
-        // {
-        //     Gizmos.DrawCube(child.bounds.center, child.bounds.size);
-        // }
- 
-        // Draw total bounds of all the children as a white box.
-        Gizmos.color = new Color(0f, 1f, 1f, 0.1f);
-        Gizmos.DrawCube(gameObject.transform.position + Vector3.up * tornadoSize.y/2, tornadoSize);
+        if (orbitingObjects.Count == 5)
+        {
+            var obj = orbitingObjects.Dequeue();
+            obj.InterruptOrbit();
+        }
+        
+        destructibleObject.OrbitAround(this.gfx);
+        orbitingObjects.Enqueue(destructibleObject);
+        //StartCoroutine(RotateAround(destructibleObject));
+    }
+
+    private IEnumerator RotateAround(DestructibleObject destructibleObject)
+    {
+        Tween tween;
+        
+        destructibleObject.transform.SetParent(this.gfx);
+
+        tween = destructibleObject.transform.DOLocalMove(
+            new Vector3(
+                Random.Range(-1.5f, 1.5f), 
+                Random.Range(-0.3f, 0.3f), 
+                Random.Range(-1.5f, 1.5f)), 
+            1).Play();
+
+        destructibleObject.transform.DOScale(destructibleObject.transform.localScale * 0.4f, 2);
+        
+        yield return new WaitUntil(() => !tween.IsPlaying());
+        
+
+        tween = destructibleObject.transform.DOLocalRotate(Random.rotation.eulerAngles, 1, RotateMode.Fast).SetLoops(-1).SetEase(Ease.Linear).Play();
+        
+        //destructibleObject.transform.DOShakePosition(5, 0.1f, 5, 90f, false, false).Play();
+        //tween = destructibleObject.transform.DOShakeRotation(5, 0.1f, 5, 90f, false).Play();
+        
+        yield return new WaitForSeconds(5);
+        tween.Kill();
+        Destroy(destructibleObject.gameObject);
     }
 }
