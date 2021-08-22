@@ -25,6 +25,15 @@ public class SoundPlayer : MonoBehaviour
         }
     }
 
+    public void PlayAt(string audioName, Vector3 pos)
+    {
+        if (audioClips.ContainsKey(audioName))
+        {
+            //audioSource.volume = normalVolumeValue;
+            AudioSource.PlayClipAtPoint(audioClips[audioName], pos);
+        }
+    }
+
     public void PlaySound(string audioName, bool lowVolume = false)
     {
         if (audioClips.ContainsKey(audioName))

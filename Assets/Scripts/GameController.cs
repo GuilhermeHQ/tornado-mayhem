@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Building Destroyed");
             tornado.OrbitObject(destructibleObject);
-            soundPlayer.PlaySound("sfx0" + Random.Range(1, 9), true);
+            soundPlayer.PlayAt("sfx0" + Random.Range(1, 9), transform.TransformPoint(destructibleObject.transform.position));
 
             currentPoints += ItemPointsDict[destructibleObject.itemType].points;
             score.scoreValue = currentPoints;
