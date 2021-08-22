@@ -190,8 +190,8 @@ MonoBehaviour:
   gfx: {fileID: 8744632875716906674}
   rotationSpeed: 200
   speed: 6
-  growthRatio: 0.05
-  maxLevel: 10
+  growthRatio: 0.5
+  maxLevel: 6
   maxObjectsOrbiting: 10
   collider: {fileID: 0}
 --- !u!54 &2030153086
