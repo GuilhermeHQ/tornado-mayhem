@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/game-start 1.unity
+    guid: 9b6d8cc2924ab6a48a5226587b605291
+  - enabled: 1
+    path: Assets/Scenes/tornado-mayhem.unity
+    guid: 13925d024880dc74da12bee9d56093ed
+  - enabled: 1
+    path: Assets/Scenes/credits.unity
+    guid: 601d7640bd64f8b42acf96c42d0d8365
   m_configObjects: {}

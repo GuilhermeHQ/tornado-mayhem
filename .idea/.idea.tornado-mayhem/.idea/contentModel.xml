@@ -7,6 +7,8 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="CreditsScreen.cs" t="Include" />
+        <e p="HomeScreen.cs" t="Include" />
         <e p="Modules" t="Include">
           <e p="DOTweenModuleAudio.cs" t="Include" />
           <e p="DOTweenModulePhysics.cs" t="Include" />

@@ -6,30 +6,65 @@ using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
-    float currentTime = 0f;
     [SerializeField] float startingTime = 10f;
     [SerializeField] Text countdownText;
     
     void Start()
     {
-        currentTime = startingTime;
     }
     
-    void Update()
-    {
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("0");
+    // void Update()
+    // {
+    //     currentTime -= 1 * Time.deltaTime;
+    //     countdownText.text = currentTime.ToString("0");
+    //
+    //     if (currentTime <= 10)
+    //     {
+    //         countdownText.color = Color.red;
+    //     }        
+    //
+    //     if (currentTime <=0)
+    //     {
+    //         currentTime = 0;
+    //     }
+    //
+    // }
 
-        if (currentTime <= 10)
+    private void UpdateTimerText(TimeSpan timeLeft)
+    {
+        countdownText.text = timeLeft.TotalSeconds.ToString("0");
+        if (timeLeft <= TimeSpan.FromSeconds(10))
         {
             countdownText.color = Color.red;
-        }        
-
-        if (currentTime <=0)
-        {
-            currentTime = 0;
         }
-
     }
+
+    public void StartTimer(float timeInSeconds, Action onFinishTimer)
+    {
+        var endTime = DateTime.Now + TimeSpan.FromSeconds(timeInSeconds);
+
+        StartCoroutine(CountTimer(endTime, UpdateTimerText, onFinishTimer));
+    }
+
+    private IEnumerator CountTimer(DateTime endTime, Action<TimeSpan> onUpdate, Action onFinishTimer)
+    {
+        while (true)
+        {
+            var timeLeft = endTime - DateTime.Now;
+            
+            onUpdate?.Invoke(timeLeft);
+            
+            yield return new WaitForSeconds(0.5f);
+
+            if (timeLeft <= TimeSpan.Zero)
+            {
+                onFinishTimer?.Invoke();
+                yield break;
+            }
+            
+        }
+    }
+    
+    
 
 }

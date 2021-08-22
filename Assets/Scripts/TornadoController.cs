@@ -17,7 +17,7 @@ public class TornadoController : MonoBehaviour
     public int maxObjectsOrbiting = 10;
     public Collider collider;
 
-    bool isEnabled = true;
+    public bool isEnabled = true;
     private Vector3 tornadoSize;
     private Vector3 inputs = Vector3.zero;
     private CinemachineFreeLook cinemachineFreeLook;

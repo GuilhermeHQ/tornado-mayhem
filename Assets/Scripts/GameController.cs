@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TornadoController tornado;
     [SerializeField] private ScoreScript score;
     [SerializeField] private CountdownTimer countdownTimer;
+    [SerializeField] private float gameTimeInSeconds = 30;
     
     private ItemPoints itemPointConfig;
     private Dictionary<ItemType, ItemPointData> ItemPointsDict;
@@ -38,8 +40,22 @@ public class GameController : MonoBehaviour
         { 
             ItemPointsDict.Add(itemPointData.itemType, itemPointData);
         }
+        
+        countdownTimer.StartTimer(gameTimeInSeconds, OnFinishTimer);
     }
-    
+
+    private void OnFinishTimer()
+    {
+        StartCoroutine(EndGame());
+    }
+
+    private IEnumerator EndGame()
+    {
+        tornado.enabled = false;
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("game-start 1");
+    }
+
     private void OnCollideWithDestructibleObject(DestructibleObject destructibleObject)
     {
         if (ItemPointsDict[destructibleObject.itemType].levelToCollect <= currentLevel)
