@@ -72,10 +72,6 @@ public class DestructibleObject: MonoBehaviour
     {
         StopShaking();
         
-        transform.DOShakePosition(0.5f, 0.1f, 10, 90f, false, false).Play();
-        
-        yield return new WaitForSeconds(0.2f);
-
         transform.SetParent(tornadoGfx);
 
         tween = transform.DOLocalMove(
@@ -103,7 +99,7 @@ public class DestructibleObject: MonoBehaviour
     public void StartShaking()
     {
         shakeTween?.Kill();
-        shakeTween = transform.DOShakePosition(1, 0.01f, 10, 90f, false, false)
+        shakeTween = transform.DOShakePosition(1, 0.05f, 10, 90f, false, false)
             .SetLoops(-1)
             .SetEase(Ease.Linear)
             .Play();

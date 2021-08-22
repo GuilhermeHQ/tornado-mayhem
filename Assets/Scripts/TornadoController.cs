@@ -15,6 +15,7 @@ public class TornadoController : MonoBehaviour
     public float growthRatio = .25f;
     public float maxLevel = 10;
     public int maxObjectsOrbiting = 10;
+    public Collider collider;
 
     bool isEnabled = true;
     private Vector3 tornadoSize;
@@ -88,7 +89,7 @@ public class TornadoController : MonoBehaviour
     
 
     
-    private void OnTriggerEnter(Collider other)
+    public void OnTornadoTriggerEnter(Collider other)
     {
         var destructibleObject = other.GetComponent<DestructibleObject>();
         if (destructibleObject == null)
