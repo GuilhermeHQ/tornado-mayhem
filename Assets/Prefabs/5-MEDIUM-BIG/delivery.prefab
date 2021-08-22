@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8737063736643729721}
   - component: {fileID: 3554843983471296917}
-  - component: {fileID: 5801253293063307702}
+  - component: {fileID: 8920388779211234839}
   m_Layer: 0
   m_Name: delivery
   m_TagString: Untagged
@@ -468,8 +468,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6e2fdefb5e64a48bb0612b22a6a362a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemType: 4
---- !u!65 &5801253293063307702
+  itemType: 3
+--- !u!65 &8920388779211234839
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -480,8 +480,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999998, y: 1.1236472, z: 2.7156034}
+  m_Center: {x: 0.000000101774106, y: 0.80370724, z: -0.108191215}
 --- !u!1 &8635657649886775902
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,11 +23,11 @@ MonoBehaviour:
     points: 5
     levelToCollect: 3
   - itemType: 3
-    points: 10
+    points: 7
     levelToCollect: 4
   - itemType: 4
-    points: 40
-    levelToCollect: 6
+    points: 10
+    levelToCollect: 5
   - itemType: 5
-    points: 40
+    points: 15
     levelToCollect: 6
